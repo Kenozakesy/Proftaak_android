@@ -93,18 +93,30 @@ public class MainActivity extends AppCompatActivity
 //                            , new ThirdFragment())
 //                    .commit();
         } else if (id == R.id.nav_facture) {
-
+            //do something here
         } else if (id == R.id.nav_Ebook_library) {
 
         } else if (id == R.id.nav_Account_options) {
 
+        } else if (id == R.id.nav_item_settings) {
+
+        } else if (id == R.id.nav_blog) {
+
+        } else if (id == R.id.nav_customer_service) {
+
+        } else if (id == R.id.nav_order_safe) {
+
+        } else if (id == R.id.nav_privacy) {
+
+        } else if (id == R.id.nav_Standardprocedures) {
+
+        } else if (id == R.id.nav_options) {
+
+        } else if (id == R.id.nav_feedback) {
+
         }
 
-//        else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
