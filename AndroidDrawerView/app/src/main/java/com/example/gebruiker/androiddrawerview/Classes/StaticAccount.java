@@ -23,6 +23,7 @@ public class StaticAccount {
     public static String GetPassword() {return password;}
     public static Gender GetGender() {return gender;}
     public static int GetAge() {return age;}
+    public static Hobby GetHobby() {return hobby;}
 
     //methods
     public static void Login(String name, String password)
