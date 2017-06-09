@@ -166,12 +166,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal">
 
-                <Button
-                    android:id="@+id/buttonKlantenservice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/klantenservice" />
-
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -182,7 +176,7 @@
                     android:id="@+id/product3"
                     tools:ignore="ContentDescription" />
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
@@ -191,7 +185,7 @@
                     android:id="@+id/product4"
                     tools:ignore="ContentDescription" />
                 <ImageView
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:adjustViewBounds="true"
@@ -200,6 +194,11 @@
                     android:id="@+id/product5"
                     tools:ignore="ContentDescription" />
             </TableRow>
+            <Button
+                android:id="@+id/buttonKlantenservice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/klantenservice" />
 
         </TableLayout>
     </ScrollView>
