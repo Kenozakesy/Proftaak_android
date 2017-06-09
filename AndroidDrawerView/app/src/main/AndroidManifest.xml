@@ -19,6 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginTestActivity"
+            android:label="Login">
+        </activity>
     </application>
 
 </manifest>
