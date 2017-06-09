@@ -78,20 +78,20 @@ public class MainActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
 
         if (id == R.id.nav_Home) {
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.content_frame
-//                            , ...//here comes new link)
-//                    .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new FirstFragment())//here comes new link)
+                    .commit();
         } else if (id == R.id.nav_choose_a_category) {
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.content_frame
-//                            , new SecondFragment())
-//                    .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new SecondFragment())
+                    .commit();
         } else if (id == R.id.nav_orders) {
-//            fragmentManager.beginTransaction()
-//                    .replace(R.id.content_frame
-//                            , new ThirdFragment())
-//                    .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new ThirdFragment())
+                    .commit();
         } else if (id == R.id.nav_facture) {
             //do something here
         } else if (id == R.id.nav_Ebook_library) {
