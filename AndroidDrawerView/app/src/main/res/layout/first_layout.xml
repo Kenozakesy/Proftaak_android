@@ -12,4 +12,5 @@
 
         android:text="HomeView"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
 </RelativeLayout>
