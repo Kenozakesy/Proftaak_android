@@ -1,206 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+app:layout_behavior="@string/appbar_scrolling_view_behavior"
+tools:context="com.example.gebruiker.androiddrawerview.MainActivity"
+tools:showIn="@layout/app_bar_main">
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.gebruiker.androiddrawerview.MainActivity"
-    tools:showIn="@layout/app_bar_main">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="UselessParent">
-        <TableLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="UselessParent">
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:shrinkColumns="*"
+        android:stretchColumns="*"
+        android:background="#ffffff">
+
+        <!-- Row 1 Starts From Here -->
+        <TableRow
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:shrinkColumns="*"
-            android:stretchColumns="*"
-            android:background="#ffffff">
+            android:gravity="center_horizontal">
 
-            <!-- Row 1 Starts From Here -->
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/video"
+                android:id="@+id/imageButtonRandom"
+                tools:ignore="ContentDescription" />
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/video"
-                    android:id="@+id/imageButtonRandom"
-                    tools:ignore="ContentDescription" />
+        </TableRow>
 
-            </TableRow>
+        <!-- Row 2 Starts From Here -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-            <!-- Row 2 Starts From Here -->
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/inlog"
+                android:id="@+id/imageButtonVlees"
+                tools:ignore="ContentDescription" />
 
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/inlog"
-                    android:id="@+id/imageButtonVlees"
-                    tools:ignore="ContentDescription" />
+        </TableRow>
 
-            </TableRow>
+        <!-- Row 3 Starts From Here -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-            <!-- Row 3 Starts From Here -->
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/categorie"
+                android:id="@+id/imageButtonVis"
+                tools:ignore="ContentDescription" />
 
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/categorie"
-                    android:id="@+id/imageButtonVis"
-                    tools:ignore="ContentDescription" />
+        </TableRow>
 
-            </TableRow>
+        <!-- Row 4 Starts From Here -->
 
-            <!-- Row 4 Starts From Here -->
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-            <TableRow
+            <ImageView
+                android:id="@+id/reclame1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
 
-                <ImageView
-                    android:id="@+id/reclame1"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitEnd"
+                app:srcCompat="@drawable/reclame1"
+                tools:ignore="ContentDescription"
+                android:gravity="center"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
 
-                    android:scaleType="fitEnd"
-                    app:srcCompat="@drawable/reclame1"
-                    tools:ignore="ContentDescription"
-                    android:gravity="center"/>
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/korting"
+                android:id="@+id/korting"
+                tools:ignore="ContentDescription"
+                android:gravity="center"
+                />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
 
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/korting"
-                    android:id="@+id/korting"
-                    tools:ignore="ContentDescription"
-                    android:gravity="center"
-                    />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/trends"
+                android:id="@+id/trends"
+                tools:ignore="ContentDescription"
+                android:gravity="center"/>
+        </TableRow>
 
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/trends"
-                    android:id="@+id/trends"
-                    tools:ignore="ContentDescription"
-                    android:gravity="center"/>
-            </TableRow>
+        <!-- Row 5 Starts From Here -->
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-            <!-- Row 5 Starts From Here -->
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/reclame2"
+                android:id="@+id/reclame2"
+                tools:ignore="ContentDescription" />
+        </TableRow>
+        <!-- Row 5 Starts From Here -->
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/reclame2"
-                    android:id="@+id/reclame2"
-                    tools:ignore="ContentDescription" />
-            </TableRow>
-            <!-- Row 5 Starts From Here -->
-            <TableRow
+            <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/product1"
+                android:id="@+id/product1"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/product2"
+                android:id="@+id/product2"
+                tools:ignore="ContentDescription" />
+        </TableRow>
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="2"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/product1"
-                    android:id="@+id/product1"
-                    tools:ignore="ContentDescription" />
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/product2"
-                    android:id="@+id/product2"
-                    tools:ignore="ContentDescription" />
-            </TableRow>
+        <!-- Row 6 Starts From Here -->
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
 
-            <!-- Row 6 Starts From Here -->
-            <TableRow
+            <ImageView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/product3"
+                android:id="@+id/product3"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/product4"
+                android:id="@+id/product4"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/product5"
+                android:id="@+id/product5"
+                tools:ignore="ContentDescription" />
+        </TableRow>
+        <Button
+            android:id="@+id/buttonKlantenservice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/klantenservice" />
 
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/product3"
-                    android:id="@+id/product3"
-                    tools:ignore="ContentDescription" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/product4"
-                    android:id="@+id/product4"
-                    tools:ignore="ContentDescription" />
-                <ImageView
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="3"
-                    android:adjustViewBounds="true"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/product5"
-                    android:id="@+id/product5"
-                    tools:ignore="ContentDescription" />
-            </TableRow>
-            <Button
-                android:id="@+id/buttonKlantenservice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/klantenservice" />
+    </TableLayout>
+</ScrollView>
 
-        </TableLayout>
-    </ScrollView>
-</RelativeLayout>
-
+</android.support.design.widget.CoordinatorLayout>
