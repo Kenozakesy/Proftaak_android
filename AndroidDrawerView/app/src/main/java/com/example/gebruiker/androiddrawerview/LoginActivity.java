@@ -36,7 +36,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
-            //profile activity here
+            //home activity here
+            finish();
+            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
         }
 
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
@@ -72,7 +74,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         progressDialog.dismiss();
                         if(task.isSuccessful()){
-                            //start the profile activity
+                            //start the home activity
+                            finish();
+                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         }
                     }
                 });

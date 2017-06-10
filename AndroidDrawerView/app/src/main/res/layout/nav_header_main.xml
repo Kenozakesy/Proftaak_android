@@ -29,7 +29,7 @@
             android:textSize="12sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/buttonInlog"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
