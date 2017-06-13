@@ -20,7 +20,7 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewWelcome"
             android:layout_width="136dp"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -33,6 +33,7 @@
             android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:onClick="login"
             android:text="Inloggen"
             android:textSize="10sp" />
 

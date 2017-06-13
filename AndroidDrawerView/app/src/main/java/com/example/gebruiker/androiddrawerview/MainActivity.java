@@ -1,5 +1,6 @@
 package com.example.gebruiker.androiddrawerview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,8 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity{
+
+    private FirebaseAuth firebaseAuth;
+    private TextView textViewUserEmail;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +36,30 @@ public class MainActivity extends AppCompatActivity{
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
+        firebaseAuth =FirebaseAuth.getInstance();
+
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+//        updateUI();
+
     }
+
+//    public void onStart(){
+//        super.onStart();
+//        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+//        updateUI(currentUser);
+//    }
+//    private void updateUI(){
+//
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if(currentUser.getEmail().toString()=="jan@gmail.com".toString()){
+//            findViewById(R.id.buttonInlog).setVisibility(View.GONE);
+//
+//        }else{
+//
+//        }
+//    }
 
     @Override
     public void onBackPressed() {
@@ -61,4 +94,9 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
+    public void login(View v)
+    {
+        Intent loginItent = new Intent(this, LoginActivity.class);
+        startActivity(loginItent);
+    }
 }
