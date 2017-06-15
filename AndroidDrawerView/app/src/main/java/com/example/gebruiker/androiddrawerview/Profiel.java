@@ -22,7 +22,7 @@ public class Profiel extends AppCompatActivity {
     }
     public void logout(View v)
     {
-        //signOut();
+        signOut();
         Intent logoutIntent = new Intent(this, MainActivity.class);
         startActivity(logoutIntent);
     }
