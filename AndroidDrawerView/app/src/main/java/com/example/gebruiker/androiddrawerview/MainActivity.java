@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity{
 
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
+    FirebaseUser currentUser;
 
 
     @Override
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity{
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        firebaseAuth =FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        getUser();
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -50,16 +52,15 @@ public class MainActivity extends AppCompatActivity{
 //        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 //        updateUI(currentUser);
 //    }
-//    private void updateUI(){
-//
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(currentUser.getEmail().toString()=="jan@gmail.com".toString()){
-//            findViewById(R.id.buttonInlog).setVisibility(View.GONE);
-//
-//        }else{
-//
-//        }
-//    }
+    private void getUser(){
+
+        currentUser = firebaseAuth.getCurrentUser();
+        //TODO
+        if(currentUser.getEmail().toString()=="jan@gmail.com".toString()){
+            findViewById(R.id.buttonInlog).setVisibility(View.GONE);
+
+        }
+    }
 
     @Override
     public void onBackPressed() {

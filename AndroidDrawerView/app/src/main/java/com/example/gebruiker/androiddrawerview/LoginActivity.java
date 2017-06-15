@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(LoginActivity.this,Profiel.class));
+                    startNewActivity();
                 }
             }
         };
@@ -65,6 +65,11 @@ public class LoginActivity extends AppCompatActivity {
                 userLogin();
             }
         });
+    }
+
+    public void startNewActivity(){
+       Intent intent = new Intent(this, MainActivity.class);
+       startActivity(intent);
     }
 
 
