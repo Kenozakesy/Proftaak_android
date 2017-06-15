@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity{
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
     FirebaseUser currentUser;
+    //
 
 
     @Override
@@ -56,7 +57,7 @@ public class MainActivity extends AppCompatActivity{
 
         currentUser = firebaseAuth.getCurrentUser();
         //TODO
-        if(currentUser.getEmail().toString()=="jan@gmail.com".toString()){
+        if(currentUser.getEmail().toString().equals("jan@gmail.com")){
             findViewById(R.id.buttonInlog).setVisibility(View.GONE);
 
         }
