@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_weight="0.10"
-            android:onClick="uiloggen"
+            android:onClick="logout"
             android:text="uitloggen"
             android:textSize="10sp" />
 
