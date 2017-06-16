@@ -46,15 +46,15 @@ public class LoginActivity extends AppCompatActivity {
         buttonSignIn = (Button) findViewById(R.id.buttonSignup);
         textViewSignup = (TextView) findViewById(R.id.textViewSignUp);
 
-        authStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() != null) {
-                    startActivity(new Intent(LoginActivity.this, Profiel.class));
-                }
-
-            }
-        };
+//        authStateListener = new FirebaseAuth.AuthStateListener() {
+//            @Override
+//            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+//                if(firebaseAuth.getCurrentUser() != null) {
+//                    startActivity(new Intent(LoginActivity.this, Profiel.class));
+//                }
+//
+//            }
+//        };
 
         buttonSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        firebaseAuth.addAuthStateListener(authStateListener);
+       // firebaseAuth.addAuthStateListener(authStateListener);
     }
 
     private void userLogin(){
@@ -87,7 +87,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("TAG", "signInWithEmail:success");
-                                FirebaseUser user = firebaseAuth.getCurrentUser();
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
                             } else {
                                 // If sign in fails, display a message to the user.

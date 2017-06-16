@@ -31,7 +31,7 @@ tools:showIn="@layout/app_bar_main">
                 android:adjustViewBounds="true"
                 android:scaleType="fitXY"
                 app:srcCompat="@drawable/video"
-                android:id="@+id/imageButtonRandom"
+                android:id="@+id/imageHeader"
                 tools:ignore="ContentDescription" />
 
         </TableRow>

@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,10 +25,11 @@ import com.google.firebase.database.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static android.R.id.toggle;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity{
         LayoutInflater inflater = this.getLayoutInflater();
         View view = inflater.inflate(R.layout.nav_header_main, null);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-         Button loginButton = (Button) view.findViewById(R.id.buttonInlog);
+        Button loginButton = (Button) view.findViewById(R.id.buttonInlog);
         loginButton.setVisibility(View.GONE);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -100,17 +102,18 @@ public class MainActivity extends AppCompatActivity{
 
     private void addDatabaseEvent() {
 
-        DatabaseReference userDatabaseReference = database.getReference("projectbol-86135").child("Account").child(currentUser.getUid());
+        DatabaseReference userDatabaseReference = database.getReference().child("Account").child(currentUser.getUid());
         userDatabaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                Log.e("Count ", "" + dataSnapshot.getChildrenCount());
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 HashMap<String, Object> hashMap = new HashMap();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     hashMap.put(ds.getKey(), ds.getValue());
-                    Log.d("val", ds.getKey() + " is: " + (String) ds.getValue());
                 }
+                updateGUI(hashMap);
             }
 
             @Override
@@ -155,8 +158,7 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View v)
-    {
+    public void login(View v) {
         Intent loginItent = new Intent(this, LoginActivity.class);
         startActivity(loginItent);
     }
@@ -169,5 +171,30 @@ public class MainActivity extends AppCompatActivity{
 
     private void signOut() {
         firebaseAuth.signOut();
+    }
+
+    public void updateGUI(HashMap map) {
+        int leeftijd = (int) map.get("Leeftijd");
+        if (map.get("Geslacht").equals("Vrouw")) {
+
+            if (leeftijd > 15 && leeftijd < 25) {
+
+            } else if (leeftijd > 25 && leeftijd < 60) {
+                ImageView imgHeader = (ImageView) findViewById(R.id.imageHeader);
+                imgHeader.setImageResource(R.drawable.dame38_teaser);
+            } else {
+
+            }
+
+
+        } else {
+            if (leeftijd > 15 && leeftijd < 25) {
+
+            } else if (leeftijd > 25 && leeftijd < 60) {
+
+            } else {
+
+            }
+        }
     }
 }
