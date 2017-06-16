@@ -2,6 +2,7 @@ package com.example.gebruiker.androiddrawerview;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -33,10 +34,10 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewSignup;
+    private FirebaseUser user;
 
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,10 @@ public class LoginActivity extends AppCompatActivity {
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() != null){
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                if(firebaseAuth.getCurrentUser() != null) {
+                    startActivity(new Intent(LoginActivity.this, Profiel.class));
                 }
+
             }
         };
 
@@ -65,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 userLogin();
             }
         });
-    }
 
+    }
 
     @Override
     protected void onStart() {
@@ -91,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("TAG", "signInWithEmail:success");
                                 FirebaseUser user = firebaseAuth.getCurrentUser();
-
 
                             } else {
                                 // If sign in fails, display a message to the user.

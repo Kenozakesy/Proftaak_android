@@ -1,6 +1,7 @@
 package com.example.gebruiker.androiddrawerview;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,37 +10,65 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import static android.R.id.toggle;
 
 public class MainActivity extends AppCompatActivity{
 
     private FirebaseAuth firebaseAuth;
-    private TextView textViewUserEmail;
-
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        firebaseAuth =FirebaseAuth.getInstance();
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
+
+            // Check if user's email is verified
+            boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+        }
     }
+
+    private void checkUser(){
+        if(user.getEmail().equals("hanh@gmail.com")){
+            login();
+        }
+    }
+
 
 
     @Override
@@ -55,7 +84,8 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         return true;
     }
 
@@ -65,22 +95,19 @@ public class MainActivity extends AppCompatActivity{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        switch(item.getItemId()) {
-            case R.id.nav_uitloggen:
-                Toast.makeText(this, "You have selected Bookmark Menu", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.nav_blog:
-                // another startActivity, this is for item with id "menu_item2"
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
+        int id = item.getItemId();
 
-        return true;
+        return super.onOptionsItemSelected(item);
     }
-    public void login(View v)
-    {
+    public void uiloggen(){
+        Intent uitlogItent = new Intent(this, MainActivity.class);
+        startActivity(uitlogItent);
+        firebaseAuth.signOut();
+    }
+
+    public void login(){
         Intent loginItent = new Intent(this, LoginActivity.class);
         startActivity(loginItent);
     }
+
 }
