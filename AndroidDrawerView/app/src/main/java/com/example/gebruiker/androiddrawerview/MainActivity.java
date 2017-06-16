@@ -17,15 +17,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static android.R.id.toggle;
 
@@ -173,15 +172,43 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth.signOut();
     }
 
+    public static int safeLongToInt(long l) {
+        if (l < Integer.MIN_VALUE || l > Integer.MAX_VALUE) {
+            throw new IllegalArgumentException
+                    (l + " cannot be cast to int without changing its value.");
+        }
+        return (int) l;
+    }
+
     public void updateGUI(HashMap map) {
-        int leeftijd = (int) map.get("Leeftijd");
+        int leeftijd = safeLongToInt((long)map.get("Leeftijd"));
+        TableRow trKlant = (TableRow) findViewById(R.id.trKlant);
+        trKlant.setVisibility(View.GONE);
+
+
         if (map.get("Geslacht").equals("Vrouw")) {
 
             if (leeftijd > 15 && leeftijd < 25) {
 
             } else if (leeftijd > 25 && leeftijd < 60) {
                 ImageView imgHeader = (ImageView) findViewById(R.id.imageHeader);
-                imgHeader.setImageResource(R.drawable.dame38_teaser);
+                ImageView imgMainPicture = (ImageView) findViewById(R.id.imageMainPicture);
+                ImageView imgBanner = (ImageView) findViewById(R.id.imageBanner);
+                ImageView imgProduct1 = (ImageView) findViewById(R.id.imageProduct1);
+                ImageView imgProduct2 = (ImageView) findViewById(R.id.imageProduct2);
+                ImageView imgProduct3 = (ImageView) findViewById(R.id.imageProduct3);
+                ImageView imgProduct4 = (ImageView) findViewById(R.id.imageProduct4);
+                ImageView imgProduct5 = (ImageView) findViewById(R.id.imageProduct5);
+
+                imgHeader.setImageResource(R.drawable.dame38_header);
+                imgMainPicture.setImageResource(R.drawable.dame38_mainpicture);
+                imgBanner.setImageResource(R.drawable.dame38_banner);
+                imgProduct1.setImageResource(R.drawable.dame38_product1);
+                imgProduct2.setImageResource(R.drawable.dame38_product2);
+                imgProduct3.setImageResource(R.drawable.dame38_product3);
+                imgProduct4.setImageResource(R.drawable.dame38_product4);
+                imgProduct5.setImageResource(R.drawable.dame38_product5);
+
             } else {
 
             }
@@ -197,4 +224,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+
 }
