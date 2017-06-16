@@ -75,6 +75,9 @@
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_chat_bubble_outline_black_24dp"
             android:title="Geef feedback" />
+        <item
+            android:id="@+id/nav_uitloggen"
+            android:title="Uitloggen" />
     </group>
 
 

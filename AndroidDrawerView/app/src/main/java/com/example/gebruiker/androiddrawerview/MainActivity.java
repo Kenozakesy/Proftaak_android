@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,28 +39,10 @@ public class MainActivity extends AppCompatActivity{
 
         firebaseAuth =FirebaseAuth.getInstance();
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-//        updateUI();
 
     }
 
-//    public void onStart(){
-//        super.onStart();
-//        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//        updateUI(currentUser);
-//    }
-//    private void updateUI(){
-//
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(currentUser.getEmail().toString()=="jan@gmail.com".toString()){
-//            findViewById(R.id.buttonInlog).setVisibility(View.GONE);
-//
-//        }else{
-//
-//        }
-//    }
 
     @Override
     public void onBackPressed() {
@@ -84,16 +67,19 @@ public class MainActivity extends AppCompatActivity{
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(item.getItemId()) {
+            case R.id.nav_uitloggen:
+                Toast.makeText(this, "You have selected Bookmark Menu", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_blog:
+                // another startActivity, this is for item with id "menu_item2"
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
-
     public void login(View v)
     {
         Intent loginItent = new Intent(this, LoginActivity.class);
