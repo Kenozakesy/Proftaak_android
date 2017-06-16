@@ -8,6 +8,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,12 +18,18 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.*;
 
-public class MainActivity extends AppCompatActivity{
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
     FirebaseUser currentUser;
+    FirebaseDatabase database;
+    DatabaseReference userDatabaseReference;
     //
 
 
@@ -37,30 +45,56 @@ public class MainActivity extends AppCompatActivity{
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+        LayoutInflater inflater = this.getLayoutInflater();
+        View view = inflater.inflate(R.layout.nav_header_main, null);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+         Button loginButton = (Button) view.findViewById(R.id.buttonInlog);
+        loginButton.setVisibility(View.GONE);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        getUser();
 
+        if (getUser()) {
+            database = FirebaseDatabase.getInstance();
+            addDatabaseEvent();
+        }
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
 //        updateUI();
 
     }
 
-//    public void onStart(){
+    //    public void onStart(){
 //        super.onStart();
 //        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
 //        updateUI(currentUser);
 //    }
-    private void getUser(){
-
+    private boolean getUser() {
         currentUser = firebaseAuth.getCurrentUser();
-        //TODO
-        if(currentUser.getEmail().toString().equals("jan@gmail.com")){
-            findViewById(R.id.buttonInlog).setVisibility(View.GONE);
+        if (currentUser != null) return true;
+        else return false;
+    }
 
-        }
+    private void addDatabaseEvent() {
+
+        DatabaseReference userDatabaseReference = database.getReference("projectbol-86135").child("Account").child(currentUser.getUid());
+        userDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                HashMap<String, Object> hashMap = new HashMap();
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    hashMap.put(ds.getKey(), ds.getValue());
+                    Log.d("val", ds.getKey() + " is: " + (String) ds.getValue());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w("er", "Failed to read value.", error.toException());
+            }
+        });
     }
 
     @Override
@@ -96,9 +130,18 @@ public class MainActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View v)
-    {
+    public void login(View v) {
         Intent loginItent = new Intent(this, LoginActivity.class);
         startActivity(loginItent);
+    }
+
+    public void logout(View v) {
+        signOut();
+        Intent logoutIntent = new Intent(this, MainActivity.class);
+        startActivity(logoutIntent);
+    }
+
+    private void signOut() {
+        firebaseAuth.signOut();
     }
 }
