@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity{
         switch(item.getItemId()) {
             case R.id.nav_uitloggen:
                 Toast.makeText(this, "You have selected Bookmark Menu", Toast.LENGTH_SHORT).show();
-                break;
+                return true;
             case R.id.nav_blog:
                 // another startActivity, this is for item with id "menu_item2"
                 break;
