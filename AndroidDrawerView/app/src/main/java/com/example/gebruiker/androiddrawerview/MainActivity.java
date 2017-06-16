@@ -1,6 +1,7 @@
 package com.example.gebruiker.androiddrawerview;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +25,9 @@ import com.google.firebase.database.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+import static android.R.id.toggle;
+
+public class MainActivity extends AppCompatActivity{
 
     private FirebaseAuth firebaseAuth;
     private TextView textViewUserEmail;
@@ -32,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference userDatabaseReference;
     //
 
+    private ActionBarDrawerToggle toggle;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         LayoutInflater inflater = this.getLayoutInflater();
         View view = inflater.inflate(R.layout.nav_header_main, null);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -59,8 +70,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-//        updateUI();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            String name = user.getDisplayName();
+            String email = user.getEmail();
+            Uri photoUrl = user.getPhotoUrl();
 
+            // Check if user's email is verified
+            boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getToken() instead.
+            String uid = user.getUid();
+        }
     }
 
     //    public void onStart(){
@@ -110,7 +134,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         return true;
     }
 
@@ -130,7 +155,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void login(View v) {
+    public void login(View v)
+    {
         Intent loginItent = new Intent(this, LoginActivity.class);
         startActivity(loginItent);
     }

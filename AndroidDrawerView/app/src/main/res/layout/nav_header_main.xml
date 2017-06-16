@@ -19,18 +19,19 @@
         android:orientation="horizontal"
         android:weightSum="1">
 
-        <TextView
-            android:id="@+id/textViewWelcome"
-            android:layout_width="136dp"
+        <Button
+            android:id="@+id/buttonUitloggen"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/nav_header_vertical_spacing"
-            android:text="Bent u al klant bij bol.com?"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="12sp" />
+            android:layout_alignParentRight="true"
+            android:layout_weight="0.10"
+            android:onClick="uiloggen"
+            android:text="uitloggen"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/buttonInlog"
-            android:layout_width="112dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="Inloggen"
