@@ -99,6 +99,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                 FirebaseUser userauth = FirebaseAuth.getInstance().getCurrentUser();
 
+                                Button btn = (Button) findViewById(R.id.buttonInlog);
+                                btn.setVisibility(View.INVISIBLE);
+
 
                             } else {
                                 // If sign in fails, display a message to the user.
