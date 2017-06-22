@@ -196,6 +196,7 @@ tools:showIn="@layout/app_bar_main">
                 android:id="@+id/imageProduct5"
                 tools:ignore="ContentDescription" />
         </TableRow>
+
         <Button
             android:id="@+id/buttonKlantenservice"
             android:layout_width="wrap_content"
