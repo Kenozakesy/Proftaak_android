@@ -216,8 +216,42 @@ public class MainActivity extends AppCompatActivity {
 
         } else {
             if (leeftijd > 15 && leeftijd < 25) {
+                ImageView imgHeader = (ImageView) findViewById(R.id.imageHeader);
+                ImageView imgMainPicture = (ImageView) findViewById(R.id.imageMainPicture);
+                ImageView imgBanner = (ImageView) findViewById(R.id.imageBanner);
+                ImageView imgProduct1 = (ImageView) findViewById(R.id.imageProduct1);
+                ImageView imgProduct2 = (ImageView) findViewById(R.id.imageProduct2);
+                ImageView imgProduct3 = (ImageView) findViewById(R.id.imageProduct3);
+                ImageView imgProduct4 = (ImageView) findViewById(R.id.imageProduct4);
+                ImageView imgProduct5 = (ImageView) findViewById(R.id.imageProduct5);
+
+                imgHeader.setImageResource(R.drawable.student21_header);
+                imgMainPicture.setImageResource(R.drawable.student21_mainpicture);
+                imgBanner.setImageResource(R.drawable.student21_banner);
+                imgProduct1.setImageResource(R.drawable.student21_product1);
+                imgProduct2.setImageResource(R.drawable.student21_product2);
+                imgProduct3.setImageResource(R.drawable.student21_product3);
+                imgProduct4.setImageResource(R.drawable.student21_product4);
+                imgProduct5.setImageResource(R.drawable.student21_product5);
 
             } else if (leeftijd > 25 && leeftijd < 60) {
+                ImageView imgHeader = (ImageView) findViewById(R.id.imageHeader);
+                ImageView imgMainPicture = (ImageView) findViewById(R.id.imageMainPicture);
+                ImageView imgBanner = (ImageView) findViewById(R.id.imageBanner);
+                ImageView imgProduct1 = (ImageView) findViewById(R.id.imageProduct1);
+                ImageView imgProduct2 = (ImageView) findViewById(R.id.imageProduct2);
+                ImageView imgProduct3 = (ImageView) findViewById(R.id.imageProduct3);
+                ImageView imgProduct4 = (ImageView) findViewById(R.id.imageProduct4);
+                ImageView imgProduct5 = (ImageView) findViewById(R.id.imageProduct5);
+
+                imgHeader.setImageResource(R.drawable.zakenman54_header);
+                imgMainPicture.setImageResource(R.drawable.zakenman54_mainpicture);
+                imgBanner.setImageResource(R.drawable.zakenman54_banner);
+                imgProduct1.setImageResource(R.drawable.zakenman54_product1);
+                imgProduct2.setImageResource(R.drawable.zakenman54_product2);
+                imgProduct3.setImageResource(R.drawable.zakenman54_product3);
+                imgProduct4.setImageResource(R.drawable.zakenman54_product4);
+                imgProduct5.setImageResource(R.drawable.zakenman54_product5);
 
             } else {
 
